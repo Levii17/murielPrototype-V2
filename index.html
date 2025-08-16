@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muriel Schematics</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon_io/favicon-16x16.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100vh; 
+            overflow: hidden; 
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; 
+            margin: 0;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+            color: white;
+            padding: 8px 16px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .left-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* App branding */
+        .app-branding {
+            display: flex;
+            align-items: center;
+            gap: 1px;
+            padding-right: 16px;
+            margin-right: 16px;
+        }
+
+        .logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            color: white;
+        }
+
+        .app-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.5px;
+        }
+        
+        .project-title {
+            font-size: 14px;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            text-align: left;
+            gap: 6px;
+            transition: all 0.2s ease;
+            min-width: 160px;
+        }
+
+        .project-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .project-details {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .icon {
+            width: 12px;
+            height: 12px;
+            opacity: 0.7;
+        }
+
+        .right-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        /* header actions */
+         .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            min-width: max-content;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+        }
+
+        .btn-secondary {
+            background: #64748b;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #475569;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #94a3b8;
+            color: #e2e8f0;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .header-buttons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Mobile menu toggle */
+        .mobile-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        /* Main Layout */
+        .main-layout {
+            display: flex;
+            flex: 1;
+            min-height: 0; 
+            overflow: hidden;
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            width: 250px;
+            background: white;
+            border-right: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .sidebar-header {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            flex-shrink: 0; 
+        }
+
+        .sidebar-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 16px 10px 40px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 14px;
+            background: white;
+            transition: all 0.2s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            pointer-events: none;
+        }
+
+        .category-dropdown {
+          margin-top: 12px;
+        }
+        
+        .category-select {
+          width: 100%;
+          padding: 10px 12px;
+          font-size: 14px;
+          border: 1px solid #cbd5e1;
+          border-radius: 8px;
+          background-color: white;
+          color: #1e293b;
+          transition: border 0.2s;
+        }
+        
+        .category-select:focus {
+          outline: none;
+          border-color: rgba(0, 0, 0, 0.05);
+          box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+
+        /* Component library */
+        .components-list {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 16px;
+            min-height: 0; 
+        }
+
+        /* Custom scrollbar for components list */
+        .components-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .components-list::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .components-list::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+
+        .components-list::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+
+        .component-category {
+            margin-bottom: 24px;
+        }
+
+        .category-header {
+            font-weight: 600;
+            color: #1e293b;
+            padding: 8px 0;
+            font-size: 15px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-align: center;
+        }
+
+        .category-header i {
+            color: #2563eb;
+        }
+
+        .component-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 12px;
+        }
+
+        .component-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: grab;
+            transition: all 0.2s;
+            border: 1px solid #e2e8f0;
+            background: white;
+            text-align: center;
+        }
+
+        .component-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            border-color: #2563eb;
+        }
+
+        .component-icon {
+            width: 48px;
+            height: 48px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .component-name {
+            font-size: 13px;
+            color: #1e293b;
+            font-weight: 500;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: white;
+            min-width: 300px;
+            min-height: 0; 
+            overflow: hidden;
+        }
+
+        /* Toolbar */
+        .toolbar {
+            height: 60px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            gap: 15px;
+            background: #f8f9fa;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .toolbar::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .toolbar::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 2px;
+        }
+
+        .tool-group {
+            display: flex;
+            gap: 5px;
+        }
+
+        .tool-btn {
+            width: 36px;
+            height: 36px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .tool-btn:hover {
+            background: #f0f0f0;
+        }
+
+        .tool-btn.active {
+            background: #4285f4;
+            color: white;
+            border-color: #4285f4;
+        }
+
+        .divider {
+            width: 1px;
+            height: 24px;
+            background: #ddd;
+            margin: 0 10px;
+            flex-shrink: 0;
+        }
+
+        .tool-btn .tooltip {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e293b;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            z-index: 100;
+        }
+
+        .tool-btn:hover .tooltip {
+            opacity: 1;
+        }
+
+        .zoom-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .zoom-level {
+            font-size: 14px;
+            color: #64748b;
+            min-width: 50px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Canvas Area */
+        .canvas-area {
+            flex: 1;
+            position: relative;
+            background: white;
+            overflow: hidden; 
+            min-height: 0; 
+            padding: 10px;
+        }
+
+        .canvas {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            border: 3px solid #000;
+            background: white;
+            background-image: 
+                /* Minor grid - light gray */
+                linear-gradient(to right, #e5e5e5 1px, transparent 1px),
+                linear-gradient(to bottom, #e5e5e5 1px, transparent 1px),
+                /* Major grid - darker gray */
+                linear-gradient(to right, #ccc 1px, transparent 1px),
+                linear-gradient(to bottom, #ccc 1px, transparent 1px);
+            background-size: 
+                10px 10px,  /* Minor grid spacing */
+                10px 10px,
+                50px 50px,  /* Major grid spacing */
+                50px 50px;
+            background-position: 
+                0 0,
+                0 0,
+                0 0,
+                0 0;
+        }
+
+        /* Title Block */
+        .title-block {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 320px;
+            height: 100px;
+            border: 2px solid #000;
+            background: white;
+            display: grid;
+            grid-template-columns: 80px 1fr 1fr 60px;
+            grid-template-rows: 1fr 1fr 1fr;
+            font-family: Arial, sans-serif;
+        }
+
+        .title-cell {
+            border-right: 1px solid #000;
+            border-bottom: 1px solid #000;
+            padding: 3px 6px;
+            display: flex;
+            align-items: center;
+            font-size: 10px;
+            background: white;
+            justify-content: flex-start;
+        }
+
+        .title-cell:last-child {
+            border-right: none;
+        }
+
+        .title-cell.no-bottom {
+            border-bottom: none;
+        }
+
+        .logo-cell {
+            background: linear-gradient(135deg, #2E5E99 0%, #1E4E89 100%);
+            color: white;
+            font-weight: bold;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            grid-row: 1 / 4;
+            grid-column: 1;
+            letter-spacing: 1px;
+        }
+
+        .header-cell {
+            font-weight: 600;
+            color: #333;
+            font-size: 9px;
+            text-transform: uppercase;
+        }
+
+        .value-cell {
+            color: #333;
+            border-bottom: none;
+            font-size: 10px;
+            font-weight: normal;
+        }
+
+        .date-cell {
+            text-align: right;
+            justify-content: flex-end;
+            font-size: 9px;
+            color: #333;
+        }
+
+        /* Right Panel - FIXED: Proper height management */
+        .right-panel {
+            width: 300px;
+            background: #f8f9fa;
+            border-left: 1px solid #ddd;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            z-index: 100;
+            overflow: hidden; 
+        }
+
+        .panel-section {
+            background: white;
+            border-bottom: 1px solid #ddd;
+            flex-shrink: 0;
+        }
+
+        .panel-header {
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+            transition: background 0.2s;
+        }
+
+        .panel-header:hover {
+            background: #f8f9fa;
+        }
+
+        .panel-header-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .panel-icon {
+            color: #4285f4;
+            font-size: 18px;
+        }
+
+        .panel-title {
+            color: #4285f4;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .panel-toggle {
+            color: #666;
+            font-size: 14px;
+            transition: transform 0.2s;
+        }
+
+        .panel-toggle.collapsed {
+            transform: rotate(-90deg);
+        }
+
+        .panel-content {
+            padding: 20px;
+        }
+
+        .panel-content.collapsed {
+            display: none;
+        }
+
+        .properties-content {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .form-title {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .form-field {
+            margin-bottom: 16px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            background: white;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #4285f4;
+        }
+
+        .form-input::placeholder {
+            color: #999;
+        }
+
+        /* Bill of Materials Styles */
+        .bom-header {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .export-btn {
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: white;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .export-btn:hover {
+            background: #f5f5f5;
+            border-color: #999;
+        }
+
+        .bom-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        .bom-table th {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 8px 6px;
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .bom-table td {
+            border: 1px solid #ddd;
+            padding: 8px 6px;
+            color: #666;
+        }
+
+        .bom-empty {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 20px;
+        }
+
+        /* Footer Styles - FIXED: Always at viewport bottom */
+        .footer {
+            background: #1e293b;
+            padding: 8px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 13px;
+            height: 40px;
+            color: #cbd5e1;
+            flex-shrink: 0; /* Prevents footer from shrinking */
+            border-top: 1px solid #334155;
+        }
+
+        .status-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+        }
+
+        .status-icon {
+            width: 14px;
+            height: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .connected .status-icon {
+            color: #28a745;
+        }
+
+        .save-section {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+        }
+
+        /* Animation for the connected status */
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        /* Hover effects */
+        .status-item:hover {
+            opacity: 0.8;
+            cursor: default;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .sidebar, .right-panel {
+                width: 240px;
+            }
+            
+            .toolbar {
+                gap: 10px;
+                padding: 0 10px;
+            }
+            
+            .divider {
+                margin: 0 6px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .sidebar, .right-panel {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                height: 100%;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            }
+            
+            .sidebar {
+                left: 0;
+                transform: translateX(-100%);
+            }
+            
+            .right-panel {
+                right: 0;
+                transform: translateX(100%);
+            }
+            
+            .sidebar.active, .right-panel.active {
+                transform: translateX(0);
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .app-branding {
+                padding-right: 8px;
+                margin-right: 8px;
+            }
+            
+            .project-title {
+                padding: 6px 16px;
+            }
+            
+            .header-actions .btn {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 8px;
+            }
+            
+            .logo-section {
+                border-right: none;
+                padding-right: 0;
+                margin-right: 0;
+            }
+            
+            .app-branding {
+                margin-right: 0;
+            }
+            
+            .project-title {
+                width: 100%;
+                max-width: 100%;
+                padding: 8px;
+                margin: 4px 0;
+            }
+            
+            .header-actions .btn {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+            
+            .left-section, .right-section {
+                gap: 8px;
+            }
+            
+            .title-block {
+                width: 280px;
+                height: 90px;
+                font-size: 8px;
+            }
+            
+            .status-section {
+                gap: 10px;
+            }
+            
+            .footer {
+                padding: 8px 12px;
+                height: 36px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 12px;
+            }
+            
+            .left-section, .right-section {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .app-branding {
+                margin-right: 0;
+            }
+            
+            .header-actions {
+                gap: 4px;
+                justify-content: space-between;
+                width: 100%;
+            }
+            
+            .btn {
+                flex: 1;
+                justify-content: center;
+                min-width: auto;
+            }
+            
+            .toolbar {
+                height: auto;
+                padding: 8px;
+                gap: 6px;
+                flex-wrap: wrap;
+            }
+            
+            .tool-group {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .title-block {
+                width: 240px;
+                height: 80px;
+                font-size: 7px;
+            }
+            
+            .footer {
+                flex-direction: column;
+                height: auto;
+                padding: 8px 12px;
+                gap: 8px;
+            }
+            
+            .status-section, .save-section {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Overlay for mobile side panels */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 99;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="left-section">
+            <button class="mobile-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="logo-section">
+                 <div class="app-branding">
+                    <div class="logo">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <span class="app-name">Muriel</span>
+                </div>
+            </div>
+            
+            <div class="project-title">Untitled Project</div>
+            <div class="project-info">
+                <div class="project-details">
+                    <div class="project-detail">
+                        <div>
+                            <span class="icon"><i class='bx  bx-stamp'></i></span>
+                            <span id="type of project">Residential Installation</span>
+                        </div>
+                        <div>
+                            <span class="icon"><i class='bx  bx-location'></i></span>
+                            <span id="location">Cape Town, WC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <div class="header-actions">
+                <button class="btn btn-outline">
+                    <i class="fas fa-history"></i> <span class="btn-text">History</span>
+                </button>
+                <button class="btn btn-secondary">
+                    <i class="fas fa-save"></i> <span class="btn-text">Save</span>
+                </button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-folder-open"></i> <span class="btn-text">Load</span>
+                </button>
+                <button class="btn btn-success">
+                    <i class="fas fa-play"></i> <span class="btn-text">Simulate</span>
+                </button>
+                <button class="btn btn-outline"><i class="fas fa-cog"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="main-layout">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3 class="sidebar-title">SANS Symbol Library</h3>
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search symbols...">
+                </div>
+
+                <div class="category-dropdown">
+                    <select class="category-select">
+                      <option value="">All Categories</option>
+                      <option value="passive">Passive Components</option>
+                      <option value="sources">Sources</option>
+                      <option value="semiconductors">Semiconductors</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="components-list">
+                <div class="component-category">
+                    <div class="category-header">
+                        Passive Components
+                    </div>
+                    <div class="component-items">
+                        <div class="component-item" draggable="true">
+                            <div class="component-icon">
+                                <i class="fas fa-resistor"></i>
+                            </div>
+                            <span class="component-name">Resistor</span>
+                        </div>
+                        <div class="component-item" draggable="true">
+                            <div class="component-icon">
+                                <i class="fas fa-capacitor"></i>
+                            </div>
+                            <span class="component-name">Capacitor</span>
+                        </div>
+                        <div class="component-item" draggable="true">
+                            <div class="component-icon">
+                                <i class="fas fa-inductor"></i>
+                            </div>
+                            <span class="component-name">Inductor</span>
+                        </div>
+                        <div class="component-item" draggable="true">
+                            <div class="component-icon">
+                                <i class="fas fa-transformer"></i>
+                            </div>
+                            <span class="component-name">Transformer</span>
+                        </div>
+                        <div class="component-item" draggable="true">
+                            <div class="component-icon">
+                                <i class="fas fa-switch"></i>
+                            </div>
+                            <span class="component-name">Switch</span>
+                        </div>
+                        <div class="component-item" draggable="true">
+                            <div class="component-icon">
+                                <i class="fas fa-fuse"></i>
+                            </div>
+                            <span class="component-name">Fuse</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="component-category">
+                    <div class="category-header">
+                        Sources
+                    </div>
+                    <div class="component-items">
+                        <div class="component-item" draggable="true">
+                            <div class="component-icon">
+                                <i class="fas fa-battery-full"></i>
+                            </div>
+                            <span class="component-name">Voltage Source</span>
+                        </div>
+                        <div class="component-item" draggable="true">
+                            <div class="component-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <span class="component-name">Current Source</span>
+                        </div>
+                        <div class="component-item" draggable="true">
+                            <div class="component-icon">
+                                <i class="fas fa-wave-square"></i>
+                            </div>
+                            <span class="component-name">AC Source</span>
+                        </div>
+                        <div class="component-item" draggable="true">
+                            <div class="component-icon">
+                                <i class="fas fa-solar-panel"></i>
+                            </div>
+                            <span class="component-name">Solar Cell</span>
+                        </div>
+                        <div class="component-item" draggable="true">
+                            <div class="component-icon">
+                                <i class="fas fa-plug"></i>
+                            </div>
+                            <span class="component-name">Power Supply</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="component-category">
+                    <div class="category-header">
+                        Semiconductors
+                    </div>
+                    <div class="component-items">
+                        <div class="component-item" draggable="true">
+                            <div class="component-icon">
+                                <i class="fas fa-diode"></i>
+                            </div>
+                            <span class="component-name">Diode</span>
+                        </div>
+                        <div class="component-item" draggable="true">
+                            <div class="component-icon">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <span class="component-name">Transistor</span>
+                        </div>
+                        <div class="component-item" draggable="true">
+                            <div class="component-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <span class="component-name">Op-Amp</span>
+                        </div>
+                        <div class="component-item" draggable="true">
+                            <div class="component-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <span class="component-name">LED</span>
+                        </div>
+                        <div class="component-item" draggable="true">
+                            <div class="component-icon">
+                                <i class="fas fa-thermometer-half"></i>
+                            </div>
+                            <span class="component-name">Thermistor</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="component-category">
+                    <div class="category-header">
+                        Output Devices
+                    </div>
+                    <div class="component-items">
+                        <div class="component-item" draggable="true">
+                            <div class="component-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <span class="component-name">Lamp</span>
+                        </div>
+                        <div class="component-item" draggable="true">
+                            <div class="component-icon">
+                                <i class="fas fa-motor"></i>
+                            </div>
+                            <span class="component-name">Motor</span>
+                        </div>
+                        <div class="component-item" draggable="true">
+                            <div class="component-icon">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <span class="component-name">Buzzer</span>
+                        </div>
+                        <div class="component-item" draggable="true">
+                            <div class="component-icon">
+                                <i class="fas fa-speaker"></i>
+                            </div>
+                            <span class="component-name">Speaker</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="toolbar">
+                <div class="tool-group">
+                    <button class="tool-btn active" title="Select">
+                        <i class="fas fa-mouse-pointer"></i>
+                        <span class="tooltip">Select (S)</span>
+                    </button>
+                    <button class="tool-btn" title="Wire">
+                        <i class="fas fa-plug"></i>
+                        <span class="tooltip">Wire (W)</span>
+                    </button>
+                    <button class="tool-btn" title="Move">
+                        <i class="fas fa-hand-paper"></i>
+                        <span class="tooltip">Move (M)</span>
+                    </button>
+                    <button class="tool-btn" title="Delete">
+                        <i class="fas fa-trash"></i>
+                        <span class="tooltip">Delete (Del)</span>
+                    </button>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <div class="tool-group">
+                    <button class="tool-btn" title="Undo">
+                        <i class="fas fa-undo"></i>
+                        <span class="tooltip">Undo (Ctrl+Z)</span>
+                    </button>
+                    <button class="tool-btn" title="Redo">
+                        <i class="fas fa-redo"></i>
+                        <span class="tooltip">Redo (Ctrl+Y)</span>
+                    </button>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="tool-group zoom-control">
+                     <button class="tool-btn" title="Zoom Out">
+                            <i class="fas fa-search-minus"></i>
+                            <span class="tooltip">Zoom Out (-)</span>
+                        </button>
+                        <span class="zoom-level">100%</span>
+                        <button class="tool-btn" title="Zoom In">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="tooltip">Zoom In (+)</span>
+                        </button>
+                        <button class="tool-btn" title="Fit to Screen">
+                            <i class="fas fa-expand"></i>
+                            <span class="tooltip">Fit to Screen (F)</span>
+                        </button>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="tool-group">
+                    <button class="tool-btn active" title="Grid">
+                        <i class="fas fa-th"></i>
+                        <span class="tooltip">Toggle Grid (G)</span>
+                    </button>
+                    <button class="tool-btn" title="Snap">
+                        <i class="fas fa-magnet"></i>
+                        <span class="tooltip">Snap to Grid</span>
+                    </button>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="tool-group">
+                    <button class="tool-btn" title="Download PDF">
+                        <i class="fa-solid fa-cloud-arrow-down"></i>                        
+                        <span class="tooltip">Download PDF</span>
+                    </button>
+                    <button class="tool-btn" title="Download SVG">
+                        <i class="fa-solid fa-cloud-arrow-down"></i>                        
+                        <span class="tooltip">Download SVG</span>
+                    </button>
+                    <button class="tool-btn" title="Import SVG">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>                        
+                        <span class="tooltip">Import SVG</span>
+                    </button>
+                    <button class="tool-btn" title="Import JSON">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>                        
+                        <span class="tooltip">Import Json</span>
+                    </button>
+                </div>
+                
+                <div class="divider"></div>
+
+                <button class="tool-btn" title="Validate">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>                    
+                    <span class="tooltip">Validate</span>
+                </button>
+
+                <button class="mobile-toggle" id="rightPanelToggle" style="display: none;">
+                    <i class="fas fa-sliders-h"></i>
+                </button>
+            </div>
+
+            <div class="canvas-area">
+                <div class="canvas">
+                    <div class="title-block">
+                        <!-- Logo cell spanning 3 rows -->
+                        <div class="title-cell logo-cell">MURIEL</div>
+                        
+                        <!-- Row 1 -->
+                        <div class="title-cell header-cell">Organization</div>
+                        <div class="title-cell header-cell">Project Name</div>
+                        <div class="title-cell date-cell">16/08/2025</div>
+                        
+                        <!-- Row 2 -->
+                        <div class="title-cell header-cell">Name</div>
+                        <div class="title-cell value-cell">Drawing Title(s)</div>
+                        <div class="title-cell date-cell">1:1</div>
+                        
+                        <!-- Row 3 -->
+                        <div class="title-cell header-cell no-bottom">Details</div>
+                        <div class="title-cell header-cell no-bottom"></div>
+                        <div class="title-cell date-cell no-bottom">1 / 1</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-panel" id="rightPanel">
+            <!-- Component Properties Section -->
+            <div class="panel-section">
+                <div class="panel-header" onclick="togglePanel('component-properties')">
+                    <div class="panel-header-content">
+                        <span class="panel-title">Component Properties</span>
+                    </div>
+                    <span class="panel-toggle" id="component-properties-toggle">▼</span>
+                </div>
+                <div class="panel-content" id="component-properties-content">
+                    <div class="properties-content">
+                        <h3 style="color: #333; margin-bottom: 10px;">Properties</h3>
+                        <p>Select a symbol to edit its properties.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Title Block Section -->
+            <div class="panel-section">
+                <div class="panel-header" onclick="togglePanel('title-block')">
+                    <div class="panel-header-content">
+                        <span class="panel-title">Title Block</span>
+                    </div>
+                    <span class="panel-toggle collapsed" id="title-block-toggle">▼</span>
+                </div>
+                <div class="panel-content collapsed" id="title-block-content">
+                    <div class="form-section">
+                        <h3 class="form-title">Title Block</h3>
+                        
+                        <div class="form-field">
+                            <input type="text" class="form-input" placeholder="Organization">
+                        </div>
+                        
+                        <div class="form-field">
+                            <input type="text" class="form-input" placeholder="Project Name">
+                        </div>
+                        
+                        <div class="form-field">
+                            <input type="text" class="form-input" placeholder="Name">
+                        </div>
+                        
+                        <div class="form-field">
+                            <input type="text" class="form-input" placeholder="Date">
+                        </div>
+                        
+                        <div class="form-field">
+                            <input type="text" class="form-input" placeholder="Scale">
+                        </div>
+                        
+                        <div class="form-field">
+                            <input type="text" class="form-input" placeholder="Drawing Title(s)">
+                        </div>
+                        
+                        <div class="form-field">
+                            <input type="text" class="form-input" placeholder="Details">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bill of Materials Section -->
+            <div class="panel-section">
+                <div class="panel-header" onclick="togglePanel('bill-of-materials')">
+                    <div class="panel-header-content">
+                        <span class="panel-title">Bill of Materials</span>
+                    </div>
+                    <span class="panel-toggle collapsed" id="bill-of-materials-toggle">▼</span>
+                </div>
+                <div class="panel-content collapsed" id="bill-of-materials-content">
+                    <div class="form-section">
+                        <div class="bom-header">
+                            <button class="export-btn">Export CSV</button>
+                            <button class="export-btn">Export XLSX</button>
+                        </div>
+                        
+                        <table class="bom-table">
+                            <thead>
+                                <tr>
+                                    <th>SKU</th>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Qty</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="4" class="bom-empty">
+                                        No components placed yet.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer - FIXED: Always at viewport bottom -->
+    <div class="footer">
+        <div class="status-section">
+            <div class="status-item connected">
+                <div class="status-icon pulse">●</div>
+                <span>Connected</span>
+            </div>
+            <div style="width: 1px; height: 14px; background: #475569; margin: 0 10px;"></div>
+            <div class="status-item components">
+                <span>Components: 3</span>
+            </div>
+            <div style="width: 1px; height: 14px; background: #475569; margin: 0 10px;"></div>
+            <div class="status-item nodes">
+                <span>Nodes: 4</span>
+            </div>
+            <div style="width: 1px; height: 14px; background: #475569; margin: 0 10px;"></div>
+            <div class="status-item simulation">
+                <span>Simulation: Ready</span>
+            </div>
+        </div>
+
+        <div class="save-section">
+            <span>Last saved: 2 minutes ago</span>
+        </div>
+    </div>
+
+    <script>
+        function togglePanel(panelId) {
+            const content = document.getElementById(panelId + '-content');
+            const toggle = document.getElementById(panelId + '-toggle');
+            
+            if (content.classList.contains('collapsed')) {
+                content.classList.remove('collapsed');
+                toggle.classList.remove('collapsed');
+            } else {
+                content.classList.add('collapsed');
+                toggle.classList.add('collapsed');
+            }
+        }
+
+        // Mobile navigation toggles
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const rightPanel = document.getElementById('rightPanel');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const rightPanelToggle = document.getElementById('rightPanelToggle');
+            const overlay = document.getElementById('overlay');
+            
+            // Show/hide sidebar
+            sidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+                overlay.classList.toggle('active');
+                // Hide right panel when showing sidebar
+                if (rightPanel.classList.contains('active')) {
+                    rightPanel.classList.remove('active');
+                }
+            });
+            
+            // Show/hide right panel
+            rightPanelToggle.addEventListener('click', function() {
+                rightPanel.classList.toggle('active');
+                overlay.classList.toggle('active');
+                // Hide sidebar when showing right panel
+                if (sidebar.classList.contains('active')) {
+                    sidebar.classList.remove('active');
+                }
+            });
+            
+            // Hide panels when clicking overlay
+            overlay.addEventListener('click', function() {
+                sidebar.classList.remove('active');
+                rightPanel.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+            
+            // Show right panel toggle on mobile
+            function handleResize() {
+                if (window.innerWidth <= 992) {
+                    rightPanelToggle.style.display = 'block';
+                } else {
+                    rightPanelToggle.style.display = 'none';
+                    sidebar.classList.remove('active');
+                    rightPanel.classList.remove('active');
+                    overlay.classList.remove('active');
+                }
+            }
+            
+            // Initial check
+            handleResize();
+            
+            // Listen for resize events
+            window.addEventListener('resize', handleResize);
+        });
+    </script>
+</body>
+</html>
